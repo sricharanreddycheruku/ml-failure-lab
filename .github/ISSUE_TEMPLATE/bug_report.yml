@@ -1,0 +1,25 @@
+name: Report a bug
+description: Describe a reproducible failure in a case, command or explanation.
+body:
+  - type: textarea
+    id: steps
+    attributes:
+      label: Command and steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+      description: Include the error message without private paths, credentials or personal data.
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version and operating system
+  - type: textarea
+    id: assumptions
+    attributes:
+      label: Relevant evaluation assumptions
+      description: For a scientific concern, explain the task or assumption that the case missed.

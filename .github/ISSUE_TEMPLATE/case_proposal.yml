@@ -1,0 +1,30 @@
+name: Propose a case
+description: Suggest a small reproducible ML failure and correction.
+title: "Case: "
+body:
+  - type: textarea
+    id: task
+    attributes:
+      label: What should the model or evaluation do?
+      description: State the prediction task and the people, records or time period it applies to.
+    validations:
+      required: true
+  - type: textarea
+    id: mistake
+    attributes:
+      label: What operation makes the result misleading?
+      description: Include the incorrect step and the proposed correction.
+    validations:
+      required: true
+  - type: textarea
+    id: check
+    attributes:
+      label: What requirement could a test check?
+      description: Explain how the check would reject the incorrect approach and accept the correction.
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: Input data and sources
+      description: Prefer a small synthetic fixture. Include useful references and any redistribution limits.
