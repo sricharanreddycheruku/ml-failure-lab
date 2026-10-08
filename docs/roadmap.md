@@ -4,6 +4,8 @@ The first release contains three seed cases. The next goal is a small collection
 
 ## Next cases
 
+See the [contribution map](contribution-map.md) for published issues with suggested fixtures, prerequisites and acceptance checks. It also covers metric aggregation, probability-label mapping, numeric feature order and several prediction-time requirements. Check the linked issue's comments before choosing work.
+
 | Proposed case | Requirement to expose |
 |---|---|
 | Exact duplicates across a split | A test of genuinely new records cannot contain the same canonical record in training |

@@ -80,7 +80,7 @@ If you have encountered a misleading metric, a data split that answered the wron
 
 For your first contribution:
 
-1. Pick a [starter issue](https://github.com/sricharanreddycheruku/ml-failure-lab/labels/good%20first%20issue) and read its comments. If someone has already agreed to work on it, choose another issue.
+1. Use the [contribution map](docs/contribution-map.md) to find a task by topic and starting knowledge, or browse [starter issues](https://github.com/sricharanreddycheruku/ml-failure-lab/labels/good%20first%20issue). Read the comments. If someone has already agreed to work on it, choose another issue.
 2. Comment with a short outline of your approach before coding. Describe the input, the misleading step, and the requirement you will check. We can work through questions in the issue.
 3. Once the approach is agreed, follow [CONTRIBUTING.md](CONTRIBUTING.md) and the [case template](templates/case/README.md) to add the experiment, explanation and tests in one pull request.
 

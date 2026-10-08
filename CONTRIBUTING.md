@@ -8,6 +8,8 @@ A pull request is a proposed change that the maintainer reviews before adding it
 
 Check [open issues](https://github.com/sricharanreddycheruku/ml-failure-lab/issues) for work that interests you. `good first issue` marks work with a small, described scope. Comment with your intended approach so we can avoid duplicate work and resolve assumptions before implementation.
 
+The [contribution map](docs/contribution-map.md) groups tasks by topic and starting knowledge. Read an issue's comments even when it has no assignee. If a contributor already has an agreed plan, choose another task.
+
 For a new idea, use the case-proposal issue form. Explain the actual prediction task, the misleading step, the requirement to test, and the data you will use. A failure must be more specific than "this model is bad."
 
 ## Prepare your checkout
@@ -24,6 +26,8 @@ python -m pip install -e ".[dev]"
 ## Add a case
 
 Use [the case template](templates/case/README.md). Add the experiment under `src/ml_failure_lab/cases/`, its explanation under `docs/cases/`, and tests under `tests/`. Register the case in `src/ml_failure_lab/registry.py`.
+
+For a new case, use a new module, explanation and `tests/test_your_case.py` file. Keep the registry and README edits small. That lets contributors work on separate files while the maintainer resolves shared-file changes during review.
 
 Every case needs:
 
