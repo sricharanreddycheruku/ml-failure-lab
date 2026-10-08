@@ -55,12 +55,14 @@ The test set has 495 majority-class records and five minority-class records. Pre
 | [group-leakage](docs/cases/group-leakage.md) | Are test entities really absent from training? | Places all records of an entity on one side of the split |
 | [feature-selection](docs/cases/feature-selection.md) | Did choosing features use held-out labels? | Fits the feature selector on training rows only |
 | [minority-recall](docs/cases/minority-recall.md) | Does the model detect the rare target class? | Reports minority recall and support alongside accuracy |
+| [different-comparison-records](docs/cases/different-comparison-records.md) | Were candidates evaluated on the same held-out records? | Aligns predictions and targets by record ID, then compares the same test set |
 
 Run another case or print structured results:
 
 ```text
 python -m ml_failure_lab run feature-selection
 python -m ml_failure_lab run minority-recall --json
+python -m ml_failure_lab run different-comparison-records --json
 ```
 
 ## See the requirement fail, then pass
