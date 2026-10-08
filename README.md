@@ -40,6 +40,14 @@ python -m ml_failure_lab run group-leakage
 
 An editable install makes the package use the files in this checkout. The first installation downloads NumPy and scikit-learn. After installation, the experiments themselves run offline.
 
+For the 99% accuracy example, run:
+
+```text
+python -m ml_failure_lab run minority-recall
+```
+
+The test set has 495 majority-class records and five minority-class records. Predicting the majority class for everyone gets 495 of 500 predictions right, but detects none of the five minority examples. Minority recall is the fraction of actual minority examples detected, so it is 0% here. The correction adds this information to the report; it does not improve the classifier.
+
 ## Available cases
 
 | Case | Question | What the correction does |
@@ -70,7 +78,13 @@ A test here is a check of a stated condition, such as whether train and test con
 
 If you have encountered a misleading metric, a data split that answered the wrong question, or preprocessing that leaked held-out information, help turn it into a small runnable case.
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md), use the [case template](templates/case/README.md), and check the [starter issues](https://github.com/sricharanreddycheruku/ml-failure-lab/labels/good%20first%20issue). You can also propose a case before writing code.
+For your first contribution:
+
+1. Pick a [starter issue](https://github.com/sricharanreddycheruku/ml-failure-lab/labels/good%20first%20issue) and read its comments. If someone has already agreed to work on it, choose another issue.
+2. Comment with a short outline of your approach before coding. Describe the input, the misleading step, and the requirement you will check. We can work through questions in the issue.
+3. Once the approach is agreed, follow [CONTRIBUTING.md](CONTRIBUTING.md) and the [case template](templates/case/README.md) to add the experiment, explanation and tests in one pull request.
+
+You can also propose a case before writing code. If you are still learning, try an existing case and point out a specific step that is confusing. That feedback helps us improve the explanation.
 
 A complete contribution includes the experiment, explanation, correction, and verification. Useful improvements to the runner, tests, setup instructions and accessible documentation are welcome too. Name-only entries, duplicate cases and untested advice do not help the project.
 
