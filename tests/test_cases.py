@@ -1,6 +1,11 @@
 import pytest
 
-from ml_failure_lab.cases import feature_selection, group_leakage, minority_recall
+from ml_failure_lab.cases import (
+    feature_selection,
+    group_leakage,
+    minority_recall,
+    source_image_split,
+)
 from ml_failure_lab.registry import CASES
 
 
@@ -43,3 +48,23 @@ def test_minority_report_exposes_zero_detected_examples_without_changing_accurac
     assert fixed["balanced_accuracy"] == 0.5
     assert fixed["actual_minority_records"] == 5
     assert fixed["detected_minority_records"] == 0
+
+def test_source_image_fixture_rejects_random_split_and_accepts_source_split():
+    rows = source_image_split.samples()
+
+    bad_train, bad_test = source_image_split.random_row_split(rows)
+    fixed_train, fixed_test = source_image_split.source_split(rows)
+
+    # The random split must have shared source IDs.
+    assert source_image_split.overlapping_sources(bad_train, bad_test) == {
+        0, 1, 2, 3, 4, 5
+    }
+
+    # The corrected split must have no shared source IDs.
+    assert source_image_split.overlapping_sources(fixed_train, fixed_test) == set()
+
+    # Reject the incorrect approach and accept the corrected one.
+    with pytest.raises(ValueError):
+        source_image_split.verify("bad")
+
+    source_image_split.verify("fixed")

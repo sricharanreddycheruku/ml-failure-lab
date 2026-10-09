@@ -55,6 +55,7 @@ The test set has 495 majority-class records and five minority-class records. Pre
 | [group-leakage](docs/cases/group-leakage.md) | Are test entities really absent from training? | Places all records of an entity on one side of the split |
 | [feature-selection](docs/cases/feature-selection.md) | Did choosing features use held-out labels? | Fits the feature selector on training rows only |
 | [minority-recall](docs/cases/minority-recall.md) | Does the model detect the rare target class? | Reports minority recall and support alongside accuracy |
+| [source-image-split](docs/cases/source-image-split.md) | Do augmented versions of the same source image leak across the train/test split? | Keeps all versions of each source image in the same split. |
 
 Run another case or print structured results:
 
