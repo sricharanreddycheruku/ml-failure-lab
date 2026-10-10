@@ -56,6 +56,7 @@ The test set has 495 majority-class records and five minority-class records. Pre
 | [feature-selection](docs/cases/feature-selection.md) | Did choosing features use held-out labels? | Fits the feature selector on training rows only |
 | [minority-recall](docs/cases/minority-recall.md) | Does the model detect the rare target class? | Reports minority recall and support alongside accuracy |
 | [different-comparison-records](docs/cases/different-comparison-records.md) | Were candidates evaluated on the same held-out records? | Aligns predictions and targets by record ID, then compares the same test set |
+| [unequal-batch-metrics](docs/cases/unequal-batch-metrics.md) | Does the batch mean measure accuracy over all records? | Counts correct predictions across all records |
 
 Run another case or print structured results:
 
