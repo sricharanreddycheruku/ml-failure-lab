@@ -17,12 +17,16 @@ def test_bad_comparison_uses_different_records_and_is_rejected():
 
 def test_fixed_comparison_scores_exactly_the_same_records():
     a, b = case.experiment("fixed")
-    assert case.targets_by_id(a) == case.targets_by_id(b) == {
-        101: 0.0,
-        102: 0.0,
-        103: 0.0,
-        104: 0.0,
-    }
+    assert (
+        case.targets_by_id(a)
+        == case.targets_by_id(b)
+        == {
+            101: 0.0,
+            102: 0.0,
+            103: 0.0,
+            104: 0.0,
+        }
+    )
     assert [row.prediction for row in a.evaluated_records] == [0.0, 0.0, 0.0, 3.0]
     assert [row.prediction for row in b.evaluated_records] == [1.0] * 4
     assert a.mse == pytest.approx((0 + 0 + 0 + 9) / 4)
