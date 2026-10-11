@@ -48,6 +48,16 @@ python -m ml_failure_lab run minority-recall
 
 The test set has 495 majority-class records and five minority-class records. Predicting the majority class for everyone gets 495 of 500 predictions right, but detects none of the five minority examples. Minority recall is the fraction of actual minority examples detected, so it is 0% here. The correction adds this information to the report; it does not improve the classifier.
 
+## Check your own train/test files
+
+Use `check-split` to inspect shared source IDs and exact feature rows in two CSV files. Add `--require-new-ids` when your evaluation requires new sources. The command runs locally and reports counts without printing your data values.
+
+```text
+python -m ml_failure_lab check-split train.csv test.csv --id-column source_id --features measurement_a measurement_b --require-new-ids --json
+```
+
+See the [CSV walkthrough](docs/checking-your-split.md) for supplied examples, exit codes and limits. Identical feature values are a reason to investigate, not proof of leakage. Disjoint IDs check one requirement, not the quality of your entire evaluation.
+
 ## Available cases
 
 | Case | Question | What the correction does |
