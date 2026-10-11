@@ -56,12 +56,15 @@ The test set has 495 majority-class records and five minority-class records. Pre
 | [feature-selection](docs/cases/feature-selection.md) | Did choosing features use held-out labels? | Fits the feature selector on training rows only |
 | [minority-recall](docs/cases/minority-recall.md) | Does the model detect the rare target class? | Reports minority recall and support alongside accuracy |
 | [source-image-split](docs/cases/source-image-split.md) | Do augmented versions of the same source image leak across the train/test split? | Keeps all versions of each source image in the same split. |
+| [different-comparison-records](docs/cases/different-comparison-records.md) | Were candidates evaluated on the same held-out records? | Aligns predictions and targets by record ID, then compares the same test set |
+| [unequal-batch-metrics](docs/cases/unequal-batch-metrics.md) | Does the batch mean measure accuracy over all records? | Counts correct predictions across all records |
 
 Run another case or print structured results:
 
 ```text
 python -m ml_failure_lab run feature-selection
 python -m ml_failure_lab run minority-recall --json
+python -m ml_failure_lab run different-comparison-records --json
 ```
 
 ## See the requirement fail, then pass

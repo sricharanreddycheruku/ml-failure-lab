@@ -8,7 +8,7 @@ Check the [current open issues](https://github.com/sricharanreddycheruku/ml-fail
 
 You should be comfortable reading a small Python function and working with lists or arrays. The issue can help you learn the ML concept while you implement it. These tasks still need a runnable experiment, explanation and tests.
 
-If you want to start with arithmetic rather than model training, try [batch accuracy in #10](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/10) or [comparing predictions in #21](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/21). For #10, nine correct predictions in one batch and one incorrect prediction in another are nine correct out of ten overall. Giving each batch equal weight instead produces 50%. Your case will show and test the difference.
+If you prefer arithmetic, try [grouped accuracy in #13](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/13) or [feature order in #12](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/12). Check the issue's current status before starting.
 
 | Issue | What you will demonstrate | Useful starting knowledge |
 |---|---|---|
@@ -17,12 +17,10 @@ If you want to start with arithmetic rather than model training, try [batch accu
 | [#3](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/3) | Different target and prediction shapes can create a pairwise error matrix | NumPy array shapes |
 | [#4](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/4) | Shuffling features and labels separately breaks their row identities | Indexing and permutations |
 | [#9](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/9) | Refitting a scaler on test data changes the coordinates supplied to the model | Averages and scaling |
-| [#10](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/10) | Unequal batches need record counts when computing total accuracy | Fractions and list operations |
 | [#11](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/11) | The probability column must match the requested event label | Class labels and array indexing |
 | [#12](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/12) | Numeric columns must follow the training feature order | Named columns and simple linear functions |
 | [#13](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/13) | One aggregate score can hide failure in a predefined group | Fractions and grouping records |
 | [#14](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/14) | Scoring fitting records measures training performance | A train/test split and a decision tree |
-| [#21](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/21) | A paired comparison must evaluate candidates on the same held-out records | Squared errors and record IDs |
 
 ## Cases with more evaluation decisions
 
