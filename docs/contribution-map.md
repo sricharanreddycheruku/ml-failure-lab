@@ -2,7 +2,7 @@
 
 Choose a topic you want to understand, then read its issue and comments. The issue contains a suggested input, the mistake to demonstrate, acceptance checks and limits. You can ask questions before writing code.
 
-Check the [current open issues](https://github.com/sricharanreddycheruku/ml-failure-lab/issues) before starting. An agreed plan in the comments means someone is already working on that issue, even if GitHub shows no assignee. Choose another task in that case. The source-image augmentation task in [#7](https://github.com/sricharanreddycheruku/ml-failure-lab/issues/7) already has a contributor's agreed plan; read that discussion before proposing any overlapping work.
+Check the [current open issues](https://github.com/sricharanreddycheruku/ml-failure-lab/issues) before starting. An agreed plan in the comments means someone is already working on that issue, even if GitHub shows no assignee. Choose another task in that case.
 
 ## Smaller first cases
 

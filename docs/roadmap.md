@@ -13,7 +13,6 @@ See the [contribution map](contribution-map.md) for published issues with sugges
 | Categorical encoding mismatch | Learned category columns must mean the same thing during training and prediction |
 | Target-array broadcasting | Error calculations must compare aligned samples, rather than every prediction against every target |
 | Independent shuffling of features and labels | Feature rows and their labels must retain the same identity |
-| Augmentations shared across splits | Derived records must follow their source's split for a test of new sources |
 | Future observations in rolling features | A feature can use only information available at its prediction time |
 | Threshold chosen from final test labels | Threshold selection needs development data, separate from final evaluation |
 | Reusing test data to choose hyperparameters | The final test data must stay outside model selection |
