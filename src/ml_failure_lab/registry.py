@@ -4,6 +4,7 @@ from ml_failure_lab.cases import (
     group_leakage,
     minority_recall,
     source_image_split,
+    test_tuned_threshold,
     unequal_batch_metrics,
 )
 
@@ -14,4 +15,5 @@ CASES = {
     "source-image-split": source_image_split,
     "different-comparison-records": different_comparison_records,
     "unequal-batch-metrics": unequal_batch_metrics,
+    "test-tuned-threshold": test_tuned_threshold,
 }
