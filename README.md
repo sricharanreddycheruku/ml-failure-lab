@@ -67,6 +67,7 @@ See the [CSV walkthrough](docs/checking-your-split.md) for supplied examples, ex
 | [minority-recall](docs/cases/minority-recall.md) | Does the model detect the rare target class? | Reports minority recall and support alongside accuracy |
 | [source-image-split](docs/cases/source-image-split.md) | Do augmented versions of the same source image leak across the train/test split? | Keeps all versions of each source image in the same split. |
 | [different-comparison-records](docs/cases/different-comparison-records.md) | Were candidates evaluated on the same held-out records? | Aligns predictions and targets by record ID, then compares the same test set |
+| [test-tuned-threshold](docs/cases/test-tuned-threshold.md) | Was the classification threshold tuned without touching final test labels? | Tunes the threshold on validation records alone, then evaluates final test records |
 | [unequal-batch-metrics](docs/cases/unequal-batch-metrics.md) | Does the batch mean measure accuracy over all records? | Counts correct predictions across all records |
 
 Run another case or print structured results:
