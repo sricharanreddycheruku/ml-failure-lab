@@ -68,6 +68,7 @@ See the [CSV walkthrough](docs/checking-your-split.md) for supplied examples, ex
 | [source-image-split](docs/cases/source-image-split.md) | Do augmented versions of the same source image leak across the train/test split? | Keeps all versions of each source image in the same split. |
 | [different-comparison-records](docs/cases/different-comparison-records.md) | Were candidates evaluated on the same held-out records? | Aligns predictions and targets by record ID, then compares the same test set |
 | [unequal-batch-metrics](docs/cases/unequal-batch-metrics.md) | Does the batch mean measure accuracy over all records? | Counts correct predictions across all records |
+| [numeric-feature-order](docs/cases/numeric-feature-order.md) | Does passing a NumPy array preserve the meaning of numeric columns? | Aligns named columns to the training schema order before prediction |
 
 Run another case or print structured results:
 
