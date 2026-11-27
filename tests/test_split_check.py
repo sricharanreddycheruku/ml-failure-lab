@@ -51,6 +51,36 @@ def test_csv_matching_is_exact_and_supports_quoted_unicode(tmp_path):
 
 
 @pytest.mark.parametrize(
+    "contents,message",
+    [
+        ('source_id,feature\n"A\nB",ok\nX,1,extra\n', "malformed CSV record at line 4"),
+        ('source_id,feature\n"A\nB",ok\nX,\n', "blank checked value at line 4"),
+    ],
+)
+def test_errors_use_physical_lines_after_a_multiline_field(tmp_path, contents, message):
+    train = tmp_path / "train.csv"
+    train.write_text(contents, encoding="utf-8")
+    test = write_csv(tmp_path / "test.csv", [("B", "1")])
+
+    with pytest.raises(ValueError, match=message) as exc:
+        check_split(train, test, "source_id", ["feature"])
+
+    # Field contents must never leak into an error message.
+    assert "A\nB" not in str(exc.value)
+
+
+def test_a_valid_multiline_field_is_still_accepted(tmp_path):
+    train = tmp_path / "train.csv"
+    train.write_text('source_id,feature\n"A\nB",ok\n', encoding="utf-8")
+    test = write_csv(tmp_path / "test.csv", [("B", "1")])
+
+    report = check_split(train, test, "source_id", ["feature"])
+
+    assert report["train_rows"] == 1
+    assert report["test_rows"] == 1
+
+
+@pytest.mark.parametrize(
     "contents,match",
     [
         ("", "header"),
