@@ -137,6 +137,61 @@ def test_cli_invalid_csv_exits_two_without_traceback(tmp_path):
     assert "Traceback" not in result.stderr
 
 
+@pytest.mark.parametrize("corrupt_train", [True, False])
+def test_cli_nonexistent_file_exits_two_without_traceback(tmp_path, corrupt_train):
+    valid = write_csv(tmp_path / "valid.csv", [("A", "1")])
+    missing = tmp_path / "nonexistent.csv"
+    train_path = missing if corrupt_train else valid
+    test_path = valid if corrupt_train else missing
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "ml_failure_lab",
+            "check-split",
+            str(train_path),
+            str(test_path),
+            "--id-column",
+            "source_id",
+        ],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    assert result.returncode == 2
+    assert "Invalid split input:" in result.stderr
+    assert "Traceback" not in result.stderr
+    assert result.stdout == ""
+
+
+@pytest.mark.parametrize("corrupt_train", [True, False])
+def test_cli_invalid_utf8_exits_two_without_traceback(tmp_path, corrupt_train):
+    valid = write_csv(tmp_path / "valid.csv", [("A", "1")])
+    bad_utf8 = tmp_path / "bad_utf8.csv"
+    bad_utf8.write_bytes(b"\x80\xff\xfe\xfa")
+    train_path = bad_utf8 if corrupt_train else valid
+    test_path = valid if corrupt_train else bad_utf8
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "ml_failure_lab",
+            "check-split",
+            str(train_path),
+            str(test_path),
+            "--id-column",
+            "source_id",
+        ],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    assert result.returncode == 2
+    assert "Invalid split input:" in result.stderr
+    assert "Traceback" not in result.stderr
+    assert result.stdout == ""
+
+
 def test_bom_and_crlf_csv_matches_plain_utf8(tmp_path):
     # A UTF-8 BOM before the header and Windows line endings must not change
     # how the first column or a non-ASCII quoted ID is read (issue #37).
