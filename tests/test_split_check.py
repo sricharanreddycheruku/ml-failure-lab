@@ -195,3 +195,20 @@ def test_repeated_complete_feature_rows_are_counted(tmp_path):
         "affected_test_rows": 2,
         "matching_train_test_pairs": 4,
     }
+
+def test_bom_and_crlf_csv_matches_plain_utf8(tmp_path):
+    # A UTF-8 BOM before the header and Windows line endings must not change
+    # how the first column or a non-ASCII quoted ID is read (issue #37).
+    bom_path = tmp_path / "bom.csv"
+    bom_path.write_bytes(b"\xef\xbb\xbf" + 'source_id,feature\r\n"café,α",ok\r\n'.encode())
+    plain_path = tmp_path / "plain.csv"
+    plain_path.write_text('source_id,feature\n"café,α",ok\n', encoding="utf-8")
+    test = write_csv(tmp_path / "test.csv", [("café,α", "ok")])
+
+    bom_report = check_split(bom_path, test, "source_id", ["feature"])
+    plain_report = check_split(plain_path, test, "source_id", ["feature"])
+
+    assert bom_report == plain_report
+    assert bom_report["train_rows"] == 1
+    assert bom_report["shared_ids"] == 1
+    assert bom_report["affected_test_rows"] == 1
