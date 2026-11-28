@@ -1,6 +1,7 @@
 from ml_failure_lab.cases import (
     different_comparison_records,
     feature_selection,
+    future_period_split,
     group_leakage,
     minority_recall,
     numeric_feature_order,
@@ -18,4 +19,5 @@ CASES = {
     "unequal-batch-metrics": unequal_batch_metrics,
     "numeric-feature-order": numeric_feature_order,
     "test-scaler-refit": test_scaler_refit,
+    "future-period-split": future_period_split,
 }
