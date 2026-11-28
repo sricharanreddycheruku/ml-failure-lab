@@ -70,6 +70,7 @@ See the [CSV walkthrough](docs/checking-your-split.md) for supplied examples, ex
 | [unequal-batch-metrics](docs/cases/unequal-batch-metrics.md) | Does the batch mean measure accuracy over all records? | Counts correct predictions across all records |
 | [numeric-feature-order](docs/cases/numeric-feature-order.md) | Does passing a NumPy array preserve the meaning of numeric columns? | Aligns named columns to the training schema order before prediction |
 | [test-scaler-refit](docs/cases/test-scaler-refit.md) | Did test preprocessing preserve the training scale and origin? | Transforms test inputs using the training-fitted scaler parameters |
+| [future-period-split](docs/cases/future-period-split.md) | Does the evaluation describe a model frozen before a future period? | Fits only labels known by the freeze time and evaluates later predictions |
 
 Run another case or print structured results:
 
