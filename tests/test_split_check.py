@@ -135,3 +135,63 @@ def test_cli_invalid_csv_exits_two_without_traceback(tmp_path):
     assert result.returncode == 2
     assert "missing columns" in result.stderr
     assert "Traceback" not in result.stderr
+
+
+def test_two_feature_columns_are_compared_as_complete_rows(tmp_path):
+    header = ("source_id", "color", "size")
+    train = write_csv(
+        tmp_path / "train.csv",
+        [
+            ("train-1", "red", "small"),
+            ("train-2", "blue", "large"),
+        ],
+        header=header,
+    )
+    test = write_csv(
+        tmp_path / "test.csv",
+        [
+            ("test-1", "red", "large"),
+            ("test-2", "blue", "small"),
+        ],
+        header=header,
+    )
+
+    report = check_split(train, test, "source_id", ["color", "size"])
+
+    assert report["shared_ids"] == 0
+    assert report["exact_feature_overlap"] == {
+        "distinct_shared_rows": 0,
+        "affected_test_rows": 0,
+        "matching_train_test_pairs": 0,
+    }
+
+
+def test_repeated_complete_feature_rows_are_counted(tmp_path):
+    header = ("source_id", "color", "size")
+    train = write_csv(
+        tmp_path / "train.csv",
+        [
+            ("train-1", "red", "small"),
+            ("train-2", "red", "small"),
+            ("train-3", "blue", "large"),
+        ],
+        header=header,
+    )
+    test = write_csv(
+        tmp_path / "test.csv",
+        [
+            ("test-1", "red", "small"),
+            ("test-2", "red", "small"),
+            ("test-3", "green", "small"),
+        ],
+        header=header,
+    )
+
+    report = check_split(train, test, "source_id", ["color", "size"])
+
+    assert report["shared_ids"] == 0
+    assert report["exact_feature_overlap"] == {
+        "distinct_shared_rows": 1,
+        "affected_test_rows": 2,
+        "matching_train_test_pairs": 4,
+    }
