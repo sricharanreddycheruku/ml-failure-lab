@@ -196,6 +196,7 @@ def test_repeated_complete_feature_rows_are_counted(tmp_path):
         "matching_train_test_pairs": 4,
     }
 
+
 def test_bom_and_crlf_csv_matches_plain_utf8(tmp_path):
     # A UTF-8 BOM before the header and Windows line endings must not change
     # how the first column or a non-ASCII quoted ID is read (issue #37).
