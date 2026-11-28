@@ -6,6 +6,7 @@ from ml_failure_lab.cases import (
     numeric_feature_order,
     source_image_split,
     test_scaler_refit,
+    training_only_imputation,
     unequal_batch_metrics,
 )
 
@@ -18,4 +19,5 @@ CASES = {
     "unequal-batch-metrics": unequal_batch_metrics,
     "numeric-feature-order": numeric_feature_order,
     "test-scaler-refit": test_scaler_refit,
+    "training-only-imputation": training_only_imputation,
 }

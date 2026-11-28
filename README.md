@@ -70,6 +70,7 @@ See the [CSV walkthrough](docs/checking-your-split.md) for supplied examples, ex
 | [unequal-batch-metrics](docs/cases/unequal-batch-metrics.md) | Does the batch mean measure accuracy over all records? | Counts correct predictions across all records |
 | [numeric-feature-order](docs/cases/numeric-feature-order.md) | Does passing a NumPy array preserve the meaning of numeric columns? | Aligns named columns to the training schema order before prediction |
 | [test-scaler-refit](docs/cases/test-scaler-refit.md) | Did test preprocessing preserve the training scale and origin? | Transforms test inputs using the training-fitted scaler parameters |
+| [training-only-imputation](docs/cases/training-only-imputation.md) | Did missing-value imputation fit statistics on training rows only? | Fits the imputer on training rows only and transforms test rows |
 
 Run another case or print structured results:
 
